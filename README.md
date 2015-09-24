@@ -1,3 +1,5 @@
+[ ![Codeship Status for notclive/chai-somewhere](https://codeship.com/projects/ff186ed0-4533-0133-726f-063293e04e74/status?branch=master)](https://codeship.com/projects/104634)
+
 # Chai Somewhere
 
 Chai Somewhere is a Chai plugin that lets you test whether an assertion applies somewhere within a test object.
