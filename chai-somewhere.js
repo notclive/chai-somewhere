@@ -10,15 +10,15 @@ module.exports = function (chai, utils) {
     utils.overwriteChainableMethod(chai.Assertion.prototype, 'include', overwriteWithTypeFilter(isArrayOrString), keepSameBehaviour);
     utils.overwriteChainableMethod(chai.Assertion.prototype, 'includes', overwriteWithTypeFilter(isArrayOrString), keepSameBehaviour);
 
-    utils.overwriteMethod(chai.Assertion.prototype, 'property', overwriteWithTypeFilter(allTypes));
+    utils.overwriteMethod(chai.Assertion.prototype, 'property', overwriteWithTypeFilter(isArrayOrObject));
 
     function setSomewhereFlag() {
         utils.flag(this, 'somewhere', true);
         return this;
-    };
+    }
 
-    function allTypes() {
-        return true;
+    function isArrayOrObject(object) {
+        return Array.isArray(object) || typeof object === 'object';
     }
 
     function isArrayOrString(object) {
