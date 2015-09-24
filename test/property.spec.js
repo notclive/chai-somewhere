@@ -40,4 +40,8 @@ describe('chai somewhere with the property assertion', function () {
     it('property sets the chain object to be the first matched object', function () {
         expect({child: {foo: 'bar'}}).to.have.somewhere.property('foo').that.equals('bar');
     });
+
+    it('does not try asserting on boolean values', function () {
+        expect([true, {foo: 'bar'}]).to.not.have.anywhere.property('fu');
+    });
 });
