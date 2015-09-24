@@ -1,6 +1,6 @@
 {
   "name": "chai-somewhere",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Chai Somewhere is a Chai plugin that lets you test whether an assertion applies somewhere within a test object.",
   "main": "chai-somewhere.js",
   "scripts": {
