@@ -2,10 +2,21 @@
   "name": "chai-somewhere",
   "version": "1.0.1",
   "description": "Chai Somewhere is a Chai plugin that lets you test whether an assertion applies somewhere within a test object.",
+  "author": "Jonathan Price <notclive@gmail.com>",
   "main": "chai-somewhere.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/notclive/chai-somewhere"
+  },
+  "bugs": {
+    "url": "https://github.com/notclive/chai-somewhere/issues"
+  },
+  "keywords": [
+    "chai"
+  ],
   "devDependencies": {
     "chai": "^3.2.0",
     "mocha": "^2.3.2"
