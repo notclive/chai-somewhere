@@ -29,15 +29,19 @@ describe('chai somewhere with the property assertion', function () {
         expect([cyclic, {foo: 'bar'}]).to.have.somewhere.property('foo');
     });
 
-    it('doesn\'t match when the property isn\'t anywhere', function () {
-        expect([{child: [{child: {foo: 'baz'}}]}]).to.not.have.anywhere.property('fu');
+    it('does not match when the property is not anywhere', function () {
+        expect([{child: [{child: {foo: 'baz'}}]}]).not.to.have.anywhere.property('fu');
     });
 
-    it('only takes effect when the somewhere property is present', function () {
-        expect({child: {foo: 'bar'}}).to.not.have.property('foo');
+    it('does not match when the property exists with a different value', function () {
+        expect({child: {foo: 'baz'}}).not.to.have.anywhere.property('foo', 'bar');
     });
 
-    it('property sets the chain object to be the first matched object', function () {
+    it('only checks children when the somewhere property is present', function () {
+        expect({child: {foo: 'bar'}}).not.to.have.property('foo');
+    });
+
+    it('sets the chain object to be the first matched object', function () {
         expect({child: {foo: 'bar'}}).to.have.somewhere.property('foo').that.equals('bar');
     });
 

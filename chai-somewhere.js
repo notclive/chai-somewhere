@@ -54,9 +54,24 @@ module.exports = function (chai, utils) {
         traverse(object).forEach(function (node) {
             utils.flag(assertion, 'object', node);
             if (!typeFilter || typeFilter(node)) {
-                overwrittenMethod.apply(assertion, testArguments);
+                silencePropertyCheck(function () {
+                    overwrittenMethod.apply(assertion, testArguments)
+                });
             }
         });
+    }
+
+    // When a key and value are passed to the .property assertion, chai check that the object
+    // tested has the provided key. We do not want this check as we don't expect all objects in the
+    // graph to contain the key.
+    function silencePropertyCheck(assertion) {
+        try {
+            assertion();
+        } catch (error) {
+            if (error.message.indexOf('has no property') === -1) {
+                throw error;
+            }
+        }
     }
 
     function checkAssertionPositiveCase(assertion, object, overwrittenMethod, testArguments, typeFilter) {
